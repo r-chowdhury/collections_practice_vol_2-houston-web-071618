@@ -33,14 +33,54 @@ def remove_non_strings(arr)
   return arr 
 end
 
-def count_elements(words)
-
-  counts = Hash.new 0
-
-  words.each do |word|
-    counts[word] += 1
-  end 
-  return counts
+def count_elements(array)
+  array.each do |original_hash|
+    original_hash[:count] = 0
+    name = original_hash[:name]
+    array.each do |hash|
+      if hash[:name] == name
+        original_hash[:count] += 1
+      end
+    end
+  end.uniq
 end
 
-puts counter_elements()
+def merge_data(keys, values)
+  final_array = []
+  keys.each do |person_name|
+    name = person_name[:first_name]
+    values.each do |person_data|
+      if person_data[name]
+        merged_person = person_data[name]
+        merged_person[:first_name] = name
+        final_array.push(merged_person)
+      end
+    end
+  end
+  return final_array
+end
+
+
+def find_cool(array)
+  cool_array = []
+  array.each do |element|
+    if element[:temperature] == "cool" 
+      cool_array.push(element) 
+    end
+  end
+  return cool_array
+end
+
+def organize_schools(schools)
+  organized_schools = {}
+  schools.each do |name, location_hash|
+    location = location_hash[:location]
+    if organized_schools[location]
+      organized_schools[location].push(name)
+    else
+      organized_schools[location] = []
+      organized_schools[location].push(name)
+    end
+  end
+  return organized_schools
+end
