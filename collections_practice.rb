@@ -71,6 +71,7 @@ def find_cool(array)
   return cool_array
 end
 
+<<<<<<< HEAD
 def organize_schools(schools)
   organized_schools = {}
   schools.each do |name, location_hash|
@@ -83,4 +84,19 @@ def organize_schools(schools)
     end
   end
   return organized_schools
+end
+=======
+def merge_data(keys, values)
+  people = []
+  keys.each do |person_name|
+    name = person_name[:first_name]
+    values.each do |person_data|
+      if person_data[name]
+        merged_person = person_data[name]
+        merged_person[:first_name] = name
+        people.push(merged_peson)
+      end
+    end
+  end
+  return container
 end
